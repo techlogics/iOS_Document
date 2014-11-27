@@ -230,13 +230,133 @@ var unit = [100: "hundred", 1000: "thousand", 1000000: "million"]
 var dict:<Int, String> = Dictionary()
 var anotherDict = Dictionary<String, String>()
 ```
+辞書の操作も配列とほぼ同じで
+```swift
+var display = ["iPhone 3G": "Not Retina", "iPhone 4": "Retina"]
+
+// 辞書に追加
+display["iPhone 6"] = "Retina"
+
+// 辞書の置き換え
+display["iPhone 6"] = "Retina HD"
+
+// 個数を調べる ※ペアの数
+var numberOfDevice = display.count // 3
+
+// 辞書の値の削除は nil を代入
+display["iPhone 6"] = nil
+```
+辞書に含まれているキーと値のペアを全て取り出すには
+```swift
+var display = ["iPhone 3G": "Not Retina", "iPhone 4": "Retina"]
+
+for (device, displayType) in display {
+	// deviceにキーが、displayTypeに値が代入される
+}
+```
+また、キーと値を別々に取り出したいときには
+```swift
+var display = ["iPhone 3G": "Not Retina", "iPhone 4": "Retina"]
+
+// キーだけの時
+for key in display.keys {
+	// keyにキーが代入される
+}
+
+// 値だけの時
+for type in display.values {
+	// typeに値が代入される
+}
+```
+この時に注意して欲しいのがfor文を使って取り出した時、順番は保障されないということ。もし順番を機にするなら配列を使う方がいいです。
+そして文字列の時と同様に配列と辞書にもCocoaのクラスがあります。配列は NSArrayで辞書は NSDictionaryです。
 >[The Swift Programming Language - Collection Types](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/CollectionTypes.html#//apple_ref/doc/uid/TP40014097-CH8-XID_167)
 
 ### 制御文
+Swiftの制御構文は基本的に他言語とあまり変わりありません。
 #### if文
+```swift
+var isSwiftAwesome = true
+
+if isSwiftAwesome {
+	// 実行される
+} else {
+	// false の時実行される
+}
+```
+さらに条件を追加することもできます。
+```swift
+var heLikesApple = true
+var sheLikesApple = false
+
+if heLikesApple {
+	println("He likes Apple")
+} else if (sheLikesApple) {
+	println("She likes Apple")
+} else {
+	// 上記のどちらでもない時に実行される
+}
+```
 #### switch文
+switch文は条件が複数ある時に使用します。
+```swift
+var month = 3
+
+switch month {
+case 1:
+	// monthが1のとき実行される
+case 2:
+	// monthが2のとき実行される
+case 3:
+	// monthが3のとき実行される
+default:
+	// それ以外のとき実行される
+}
+```
 #### while文
+while文は条件が真の間はずっと実行されます。
+```swift
+var count = 0
+
+// countが5以下の間実行される
+while count < 5 {
+	println("count is \(count)")
+	count++
+}
+```
+while文は条件が変わらない限りずっと処理し続けてしまうので条件を変えてあげるか、処理を中断させないとダメです。
+```swift
+var count = 0
+
+// countが3のとき終了させる
+while count < 5 {
+	println("count is \(count)")
+	
+	// ここでcountをチェックし3なら終了
+	if count == 3 {
+		break
+	}
+	
+	count++
+```
 #### for-in文
+for in は指定した範囲内で繰り返しをしてくれるものです。
+```swift
+// 1 ~ 10まで繰り返す
+for i in 1...10 {
+	println(i)
+}
+```
+1...10 の ... は範囲演算子と呼ばれていて、この例だと1から10までの範囲を返してくれます。範囲には配列や辞書を指定することも可能です。
+```swift
+// 配列を使ってfor in 
+
+var fruits = ["🍎", "🍊", "🍇"]
+
+for fruit in fruits {
+	println("\(fruit)")
+}
+```
 >[The Swift Programming Language - Control Flow](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/ControlFlow.html#//apple_ref/doc/uid/TP40014097-CH9-XID_190)
 
 ### 関数
@@ -246,13 +366,14 @@ var anotherDict = Dictionary<String, String>()
 >[The Swift Programming Language - Closures](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Closures.html#//apple_ref/doc/uid/TP40014097-CH11-XID_151)
 
 ### クラスと構造体
->[The Swift Programming Language - Classes and Structures](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/ClassesAndStructures.html#//apple_ref/doc/uid/TP40014097-CH13-XID_134)
-
 #### プロパティ
 #### メソッド
 #### インスタンス
 #### 継承
+>[The Swift Programming Language - Classes and Structures](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/ClassesAndStructures.html#//apple_ref/doc/uid/TP40014097-CH13-XID_134)
+
 ### オプショナル型
+>[The Swift Programming Language - Optional](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/OptionalChaining.html#//apple_ref/doc/uid/TP40014097-CH21-XID_368)
 
 ## <チュートリアル> アプリを作ろう
 
@@ -314,7 +435,7 @@ Clang の Static Analyzer を使えば、プログラムを実行する前に潜
 
 #### Instruments
 
-Xcode に付属する Instruments を使うと、さらに高度な解析が簡単に行えます。メモリリークの発見や、`deallocate` されたオブジェクトへの操作によるエラー、パフォーマンスのチューニングなど、多くのことができます。詳しくはドキュメントを参照してください。
+Xcodeの Instruments を使うと、さらに高度な解析を行うことができます。
 
 - [Instruments User Guide](https://developer.apple.com/library/ios/#documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/Introduction/Introduction.html)
 - [日本語ドキュメント](https://developer.apple.com/jp/devcenter/ios/library/japanese.html)の「Instruments ユーザガイド」
@@ -327,9 +448,7 @@ Xcode に付属する Instruments を使うと、さらに高度な解析が簡�
 - [Apple Developer Center](http://developer.apple.com/ios/)
   - 公式ドキュメント
 - [日本語ドキュメント](https://developer.apple.com/jp/devcenter/ios/library/japanese.html)
-  - 公式ドキュメントの公式日本語訳。わりと更新されていて英語よりやや読みやすいかもしれない。開発ガイド的なものだけある
+  - 公式ドキュメントの公式日本語訳。
 - [iOS Development Training Course](https://github.com/mixi-inc/iOSTraining)
   - 株式会社 mixi のトレーニングコース。とても充実しています。
-
-#### 書籍
 
