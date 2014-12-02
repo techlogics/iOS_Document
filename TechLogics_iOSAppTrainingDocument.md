@@ -610,14 +610,65 @@ class SomeViewController: UIViewController {
 Cocoa Touchではメソッドをオーバーライドしたら、原則その中でスーパークラスのメソッドを呼び出すことになっています。スーパークラスにアクセスするためにはsuperとつけます。
 >[The Swift Programming Language - Classes and Structures](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/ClassesAndStructures.html#//apple_ref/doc/uid/TP40014097-CH13-XID_134)
 
-## チュートリアル アプリを作ろう
+## アプリを作ろう
+### 入門編
+#### プロジェクトの作成  
+Xcodeを開き、`File -> New -> Project`より新規プロジェクトを作成してください。今回作成するアプリはSingle View Applicationです。  
+  
+![](https://www.evernote.com/shard/s324/sh/68402932-e466-4137-b0d2-182c5b95c2d7/8f3faeb6bd54b757df4210d43d4c39dd/res/c7ceee9b-705f-41e9-af38-bd7252c36970/skitch.png)  
+  
+次にアプリの情報を入力していきます。プロジェクトの名前、そして所属組織の名前、なければ適当で構いません。そして最後に組織の識別子、一般的にはドメインの逆を指定します。ここまで終わったら、開発言語をSwiftに設定して終わりです。  
+  
+![](https://www.evernote.com/shard/s324/sh/010c0c90-5413-4c5c-bc69-503fa927d9e0/e01b4d80b05493295a1981ec40b04c9e/res/eb31bbed-1cdb-43a6-820f-215642c6919d/skitch.png)  
 
-
-
-### プロジェクト作成
-
+これがXcodeの画面です。  
+  
+![](https://www.evernote.com/shard/s324/sh/74b5801b-ee5e-418b-9f1e-a266cd6e0b25/453becde3917d99c695b536f232d0f54/res/f32e60fe-055a-4e32-8320-91d39781ea6f/skitch.png)
+  
+今回はこのような結果を返してくれるAPIと使い、天気予報アプリを作りたいと思います。
+```json
+{
+    "base": "cmc stations", 
+    "clouds": {
+        "all": 36
+    }, 
+    "cod": 200, 
+    "coord": {
+        "lat": 35.64, 
+        "lon": 139.68
+    }, 
+    "dt": 1387204059, 
+    "id": 1864381, 
+    "main": {
+        "humidity": 18, 
+        "pressure": 1019, 
+        "temp": 279.63, 
+        "temp_max": 282.04, 
+        "temp_min": 277.59
+    }, 
+    "name": "Denenchōfu", 
+    "sys": {
+        "country": "JP", 
+        "message": 0.0086, 
+        "sunrise": 1387143858, 
+        "sunset": 1387178986
+    }, 
+    "weather": [
+        {
+            "description": "scattered clouds", 
+            "icon": "03n", 
+            "id": 802, 
+            "main": "Clouds"
+        }
+    ], 
+    "wind": {
+        "deg": 306, 
+        "gust": 4.63, 
+        "speed": 4.11
+    }
+}
+```
 ---
-
 ## 課題
 
 課題では、iPhone アプリを作ってもらいます。一からアプリを作成し、できれば実機で動作させましょう。
