@@ -10,8 +10,12 @@ import UIKit
 
 class ViewController: UITableViewController {
     
-    let newsUrlStrings = ["http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=http://rss.itmedia.co.jp/rss/2.0/news_bursts.xml&num=10", "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=http://jp.techcrunch.com/feed/&num=10", "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=http://feeds.gizmodo.jp/rss/gizmodo/index.xml&num=10"]
-    let imageNames = ["gizmodo", "techCrunch", "itmedia"]
+    let URLStrings = ["http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=http://liginc.co.jp/feed&num=20",
+                      "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=http://www.nxworld.net/feed/&num=20",
+                      "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=http://feeds.gizmodo.jp/rss/gizmodo/index.xml&num=20"
+                      ]
+    let imageNames = ["lig", "nxworld", "gizmodo"]
+    
     var entries = NSMutableArray()
 
     override func viewDidLoad() {
@@ -32,8 +36,10 @@ class ViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell: UITableViewCell
-        if indexPath.row == 0 {
+        if indexPath.row % 3 == 0 {
             cell = tableView.dequeueReusableCellWithIdentifier("top") as UITableViewCell
+        } else if indexPath.row % 5 == 0 {
+            cell = tableView.dequeueReusableCellWithIdentifier("top2") as UITableViewCell
         } else {
             cell = tableView.dequeueReusableCellWithIdentifier("news") as UITableViewCell
         }
@@ -48,7 +54,7 @@ class ViewController: UITableViewController {
         dateLabel.text = entries[indexPath.row]["publishedDate"] as? String
         
         var urlString = entry["url"] as String
-        var index = find(newsUrlStrings, urlString)
+        var index = find(URLStrings, urlString)
         var imageName = self.imageNames[index!]
         var image = UIImage(named: imageName)
         var imageView = cell.viewWithTag(4) as UIImageView
@@ -65,9 +71,9 @@ class ViewController: UITableViewController {
 
         entries.removeAllObjects()
         
-        for newsUrlString in newsUrlStrings {
+        for URLString in URLStrings {
         
-            var url = NSURL(string: newsUrlString)
+            var url = NSURL(string: URLString)
             var task = NSURLSession.sharedSession().dataTaskWithURL(url!, completionHandler: {data, response, error in
                 var dict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
                 
@@ -79,27 +85,12 @@ class ViewController: UITableViewController {
                             formatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss zzzz"
                             for var i = 0; i < entries.count; i++ {
                                 var entry = entries[i] as NSMutableDictionary
-                                entry["url"] = newsUrlString
-                                
+                                entry["url"] = URLString
                                 var dateStr = entry["publishedDate"] as String
                                 var date = formatter.dateFromString(dateStr)
                                 entry["date"] = date
                             }
                             self.entries.addObjectsFromArray(entries)
-                            self.entries.sortUsingComparator({ object1, object2 in
-                                var date1 = object1["date"] as NSDate
-                                var date2 = object2["date"] as NSDate
-                                
-                                var order = date1.compare(date2)
-                                
-                                if order == NSComparisonResult.OrderedAscending {
-                                    return NSComparisonResult.OrderedDescending
-                                } else if order == NSComparisonResult.OrderedDescending {
-                                    return NSComparisonResult.OrderedAscending
-                                }
-                                
-                                return order
-                            })
                         }
                     }
                 }
