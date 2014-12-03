@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "966FB8E31A2F2C2D00ABDF17"
-               BuildableName = "MyFirstApp.app"
-               BlueprintName = "MyFirstApp"
-               ReferencedContainer = "container:MyFirstApp.xcodeproj">
+               BlueprintIdentifier = "969191721A0A53B60051E237"
+               BuildableName = "NewsWithSwift.app"
+               BlueprintName = "NewsWithSwift"
+               ReferencedContainer = "container:NewsWithSwift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -28,10 +28,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "966FB8F81A2F2C2E00ABDF17"
-               BuildableName = "MyFirstAppTests.xctest"
-               BlueprintName = "MyFirstAppTests"
-               ReferencedContainer = "container:MyFirstApp.xcodeproj">
+               BlueprintIdentifier = "969191871A0A53B60051E237"
+               BuildableName = "NewsWithSwiftTests.xctest"
+               BlueprintName = "NewsWithSwiftTests"
+               ReferencedContainer = "container:NewsWithSwift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,20 +46,20 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "966FB8F81A2F2C2E00ABDF17"
-               BuildableName = "MyFirstAppTests.xctest"
-               BlueprintName = "MyFirstAppTests"
-               ReferencedContainer = "container:MyFirstApp.xcodeproj">
+               BlueprintIdentifier = "969191871A0A53B60051E237"
+               BuildableName = "NewsWithSwiftTests.xctest"
+               BlueprintName = "NewsWithSwiftTests"
+               ReferencedContainer = "container:NewsWithSwift.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "966FB8E31A2F2C2D00ABDF17"
-            BuildableName = "MyFirstApp.app"
-            BlueprintName = "MyFirstApp"
-            ReferencedContainer = "container:MyFirstApp.xcodeproj">
+            BlueprintIdentifier = "969191721A0A53B60051E237"
+            BuildableName = "NewsWithSwift.app"
+            BlueprintName = "NewsWithSwift"
+            ReferencedContainer = "container:NewsWithSwift.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -75,10 +75,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "966FB8E31A2F2C2D00ABDF17"
-            BuildableName = "MyFirstApp.app"
-            BlueprintName = "MyFirstApp"
-            ReferencedContainer = "container:MyFirstApp.xcodeproj">
+            BlueprintIdentifier = "969191721A0A53B60051E237"
+            BuildableName = "NewsWithSwift.app"
+            BlueprintName = "NewsWithSwift"
+            ReferencedContainer = "container:NewsWithSwift.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -93,10 +93,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "966FB8E31A2F2C2D00ABDF17"
-            BuildableName = "MyFirstApp.app"
-            BlueprintName = "MyFirstApp"
-            ReferencedContainer = "container:MyFirstApp.xcodeproj">
+            BlueprintIdentifier = "969191721A0A53B60051E237"
+            BuildableName = "NewsWithSwift.app"
+            BlueprintName = "NewsWithSwift"
+            ReferencedContainer = "container:NewsWithSwift.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

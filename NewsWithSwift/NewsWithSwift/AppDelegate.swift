@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  MyFirstApp
+//  NewsWithSwift
 //
-//  Created by Kenichi Saito on 12/3/14.
+//  Created by Kenichi Saito on 11/5/14.
 //  Copyright (c) 2014 TechLogics. All rights reserved.
 //
 
