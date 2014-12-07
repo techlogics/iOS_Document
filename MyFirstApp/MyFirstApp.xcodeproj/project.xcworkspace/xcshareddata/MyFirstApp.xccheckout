@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>7F919C99-E78F-4392-80C7-019B246417AD</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MyFirstApp</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C1CD11AEA68B5FEA28410544E264F48B3119A2E2</key>
+		<string>https://github.com/techlogics/iOS_Trainig.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>MyFirstApp/MyFirstApp.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C1CD11AEA68B5FEA28410544E264F48B3119A2E2</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/techlogics/iOS_Trainig.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C1CD11AEA68B5FEA28410544E264F48B3119A2E2</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C1CD11AEA68B5FEA28410544E264F48B3119A2E2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>iOS_Trainig</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -611,7 +611,7 @@ Cocoa Touchではメソッドをオーバーライドしたら、原則その中
 >[The Swift Programming Language - Classes and Structures](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/ClassesAndStructures.html#//apple_ref/doc/uid/TP40014097-CH13-XID_134)
 
 ## アプリを作ろう
-### 入門編
+### ニュースアプリの作成
 #### プロジェクトの作成  
 Xcodeを開き、`File -> New -> Project`より新規プロジェクトを作成してください。今回作成するアプリはSingle View Applicationです。  
   
@@ -625,52 +625,181 @@ Xcodeを開き、`File -> New -> Project`より新規プロジェクトを作成
   
 ![](https://www.evernote.com/shard/s324/sh/74b5801b-ee5e-418b-9f1e-a266cd6e0b25/453becde3917d99c695b536f232d0f54/res/f32e60fe-055a-4e32-8320-91d39781ea6f/skitch.png)
   
-今回はこのような結果を返してくれるAPIと使い、天気予報アプリを作りたいと思います。
-```json
-{
-    "base": "cmc stations", 
-    "clouds": {
-        "all": 36
-    }, 
-    "cod": 200, 
-    "coord": {
-        "lat": 35.64, 
-        "lon": 139.68
-    }, 
-    "dt": 1387204059, 
-    "id": 1864381, 
-    "main": {
-        "humidity": 18, 
-        "pressure": 1019, 
-        "temp": 279.63, 
-        "temp_max": 282.04, 
-        "temp_min": 277.59
-    }, 
-    "name": "Denenchōfu", 
-    "sys": {
-        "country": "JP", 
-        "message": 0.0086, 
-        "sunrise": 1387143858, 
-        "sunset": 1387178986
-    }, 
-    "weather": [
-        {
-            "description": "scattered clouds", 
-            "icon": "03n", 
-            "id": 802, 
-            "main": "Clouds"
-        }
-    ], 
-    "wind": {
-        "deg": 306, 
-        "gust": 4.63, 
-        "speed": 4.11
+今回はこのようなニュースアプリを作りたいと思います。
+![](https://www.evernote.com/shard/s324/sh/37193b5d-7f0e-4070-aa9f-a4621195bf97/d00c57abbc5f2bb5ae797a544fd5166f/res/9525ba17-7a09-480c-abcb-6e8aa8a25cb0/skitch.png)
+![](https://www.evernote.com/shard/s324/sh/e8472c1f-18ae-443b-be73-7870e2e87ae9/147e375f4ed56141ec96d681edd15481/res/d8aac4b8-3e87-4529-a34e-22a7a1ba72e3/skitch.png)
+![](https://www.evernote.com/shard/s324/sh/9e836069-98d2-4bb8-ae90-00cc7f62cc97/2a2786f2eabf202a7ff188adfa59e2a4/res/af33e71a-60aa-4a45-bc69-914514044747/skitch.png)
+
+  
+機能としては、  
+* ニュースのタイトルの表示
+* ニュースの記事の表示
+* ニュースの時間を表示
+* ニュースの詳細ページを表示
+* 記事をつぶやく
+
+
+
+
+
+次に画面の構成を考えていきます。iOSでは基本的に一つの画面に対して一つのコントローラーを持ち画面を管理します。今回作るアプリの画面の構成は、ニュース一覧を表示する`NewsTableViewController`が一つ、そして記事の詳細を表示する`DetailViewController`が一つの二つの画面構成で開発していきたいと思います。  
+開発の基本の流れとして、画面のレイアウトを考える、そしてそれに合わせコードを書いていくのが一般的な流れです。では、早速画面のレイアウトを考えていきましょう。Xcodeを開いてください。  
+  
+
+まずは、左のファイル一覧から`Main.storyboard`を選択し不要な`ViewController`を削除します。そして左下のライブラリーから`TableViewController`と`ViewController`をキャンバスに配置してください。
+![](https://www.evernote.com/shard/s324/sh/fd2df4af-f8fd-4bd7-bd74-70e36a40b83d/6dd0821bb62dcc48f4845e1aa5f39e8d/res/19a54c25-30f7-4bed-b05e-e9222f23c2f2/skitch.png)  
+
+このようになれば大丈夫です。
+
+![](https://www.evernote.com/shard/s324/sh/71ab7a62-0dd7-4aeb-a5d0-e86757c1aeed/1ece38025b6a238ea2b747a93ee66503/res/7c8f6841-b3ab-469c-a38b-250fe575f4b0/skitch.png)  
+
+次にTableViewControllerを起動時最初に表示させたいので、InitialViewControllerに設定してあげます。  
+
+![](https://www.evernote.com/shard/s324/sh/76a0002a-8fe4-4a4d-8b49-339ddcacc9d5/550b5fb04b97c9d124225fc8390550a1/res/d88f8810-ac23-47b6-bdad-f2879ffa0333/skitch.png)  
+
+最後に`NavigationController`と呼ばれるViewControllerの階層を管理するコントローラーを追加して一旦storyboardからは離れます。下記のようになれば大丈夫です。
+
+![](https://www.evernote.com/shard/s324/sh/bcb47b40-2a2d-4df2-b41a-72467ec3d000/252e9287484f059606860f2890e2dc99/res/83206bad-15ce-469b-b461-5c63b79c2216/skitch.png)  
+
+ここですこしコードをいじってみます。左のファイル一覧からViewController.swiftを削除してください。そして新しくファイルを追加していきます。Menuバーから`File -> New -> File`と選択していき下記の画面を出します。ここでは`Cocoa Touch Class`を選択してください。  
+
+![](https://www.evernote.com/shard/s324/sh/81295224-0f70-4e6f-a0bc-7c827adaebd0/529c55b534f72423452ff22c57bd5bba/res/f12f2de8-1264-4b27-aa80-afecd3957eea/skitch.png)  
+
+ファイル名を`NewsTableViewController`にしてSubclassは`UITableViewcontroller`にします。言語もSwiftにしましょう。
+
+![](https://www.evernote.com/shard/s324/sh/1c88e7f8-940c-4390-af1a-7238073c4bf2/ea3284c2371c96a3d496dec06e24f0e0/res/e0882bb6-edf8-4c6c-9dd9-7f9cf65074b5/skitch.png)  
+
+保存するフォルダをプロジェクトのフォルダに指定します。
+
+![](https://www.evernote.com/shard/s324/sh/a556a1cc-c294-4715-b005-e065ae517ed8/f361ef8efcbe54c2980bd9afd147db35/res/ddd6e97c-b900-4558-8f9f-3ffa6b591bc1/skitch.png)  
+
+そしたらファイル一覧から`NewstableViewController`ファイルが追加されたのが確認できるはずです。
+
+![](https://www.evernote.com/shard/s324/sh/b2a4aded-890c-4dd6-a9b9-820b4b3968d2/543d7331fa5a17cf49762dc38bd75395/res/4d67aab9-c4e9-4fe1-8437-347de469125b/skitch.png)  
+
+ではいよいよコードを見ていきましょう。`NewsTableViewController`を選択してください。上のコードが編集していないコードなのですが、たくさんコメントが書いてあります。これを下のコードのように書き換えてください。  
+
+#####変更前
+```swift
+import UIKit
+
+class NewsTableViewController: UITableViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    // MARK: - Table view data source
+
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // #warning Potentially incomplete method implementation.
+        // Return the number of sections.
+        return 0
+    }
+
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete method implementation.
+        // Return the number of rows in the section.
+        return 0
+    }
+
+    /*
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
+
+        // Configure the cell...
+
+        return cell
+    }
+    */
+
+    /*
+    // Override to support conditional editing of the table view.
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // Return NO if you do not want the specified item to be editable.
+        return true
+    }
+    */
+
+    /*
+    // Override to support editing the table view.
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            // Delete the row from the data source
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        } else if editingStyle == .Insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }    
+    }
+    */
+
+    /*
+    // Override to support rearranging the table view.
+    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+
+    }
+    */
+
+    /*
+    // Override to support conditional rearranging of the table view.
+    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // Return NO if you do not want the item to be re-orderable.
+        return true
+    }
+    */
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using [segue destinationViewController].
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}
+```
+#####変更後
+```swift
+import UIKit
+
+class NewsTableViewController: UITableViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 0
+    }
+
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
+
+        return cell
     }
 }
 ```
-
-まずはUIパーツを配置していきたいと思います。
-
 ---
 ## 課題
 

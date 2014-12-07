@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+
 
 class ViewController: UITableViewController {
     
@@ -59,7 +61,6 @@ class ViewController: UITableViewController {
         var image = UIImage(named: imageName)
         var imageView = cell.viewWithTag(4) as UIImageView
         imageView.image = image
-
         return cell
     }
     
@@ -71,15 +72,18 @@ class ViewController: UITableViewController {
 
         entries.removeAllObjects()
         
-        for URLString in URLStrings {
         
+        
+        for URLString in URLStrings {
             var url = NSURL(string: URLString)
+            
             var task = NSURLSession.sharedSession().dataTaskWithURL(url!, completionHandler: {data, response, error in
                 var dict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
                 
                 if var responseData = dict["responseData"] as? NSDictionary {
                     if var feed = responseData["feed"] as? NSDictionary {
                         if var entries = feed["entries"] as? NSArray {
+                            println(entries)
                             var formatter = NSDateFormatter()
                             formatter.locale = NSLocale(localeIdentifier: "en-US")
                             formatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss zzzz"
@@ -94,7 +98,7 @@ class ViewController: UITableViewController {
                         }
                     }
                 }
-            
+                
                 dispatch_async(dispatch_get_main_queue(), {
                     self.tableView.reloadData()
                 })
@@ -102,6 +106,7 @@ class ViewController: UITableViewController {
             task.resume()
         }
     }
+
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "detail" {
@@ -110,4 +115,3 @@ class ViewController: UITableViewController {
         }
     }
 }
-

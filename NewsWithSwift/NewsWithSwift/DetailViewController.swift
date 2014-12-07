@@ -36,19 +36,4 @@ class DetailViewController: UIViewController {
             presentViewController(controller, animated: true, completion: {})
         }
     }
-    
-    @IBAction func facebook(sender: AnyObject) {
-        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook) {
-            var controller = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-            
-            var link = entry["link"] as String
-            var url = NSURL(string: link)
-            controller.addURL(url)
-            
-            var title = entry["title"] as String
-            controller.setInitialText(title)
-            
-            presentViewController(controller, animated: true, completion: {})
-        }
-    }
 }

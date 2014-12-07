@@ -240,11 +240,6 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="TNx-x2-qHv"/>
-                        <barButtonItem title="Facebook" id="8g2-V0-OgK">
-                            <connections>
-                                <action selector="facebook:" destination="EHQ-kS-HLI" id="T4w-u1-5pM"/>
-                            </connections>
-                        </barButtonItem>
                     </toolbarItems>
                     <connections>
                         <outlet property="webView" destination="tU1-2y-3Yr" id="rX3-ag-fve"/>
