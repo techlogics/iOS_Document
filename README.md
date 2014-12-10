@@ -3,7 +3,7 @@
 ## 文法
 
 =>初めて触る人向け/欠けている基礎的知識を補う
-https://github.com/techlogics/iOS_Curriculum/blob/master/TechLogics_iOSAppTrainingDocument.md
+- [初めてのiOSプログラミング](https://github.com/techlogics/iOS_Document/blob/master/TechLogics_iOSAppTrainingDocument.md)
 
 
 ## 開発フロー/運用/保守性
