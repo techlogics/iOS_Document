@@ -626,15 +626,12 @@ Xcodeを開き、`File -> New -> Project`より新規プロジェクトを作成
 ![](https://www.evernote.com/shard/s324/sh/74b5801b-ee5e-418b-9f1e-a266cd6e0b25/453becde3917d99c695b536f232d0f54/res/f32e60fe-055a-4e32-8320-91d39781ea6f/skitch.png)
   
 今回はこのようなニュースアプリを作りたいと思います。
-![](https://www.evernote.com/shard/s324/sh/37193b5d-7f0e-4070-aa9f-a4621195bf97/d00c57abbc5f2bb5ae797a544fd5166f/res/9525ba17-7a09-480c-abcb-6e8aa8a25cb0/skitch.png)
-![](https://www.evernote.com/shard/s324/sh/e8472c1f-18ae-443b-be73-7870e2e87ae9/147e375f4ed56141ec96d681edd15481/res/d8aac4b8-3e87-4529-a34e-22a7a1ba72e3/skitch.png)
-![](https://www.evernote.com/shard/s324/sh/9e836069-98d2-4bb8-ae90-00cc7f62cc97/2a2786f2eabf202a7ff188adfa59e2a4/res/af33e71a-60aa-4a45-bc69-914514044747/skitch.png)
+#`To DO Demo`
 
   
 機能としては、  
 * ニュースのタイトルの表示
 * ニュースの記事の表示
-* ニュースの時間を表示
 * ニュースの詳細ページを表示
 * 記事をつぶやく
 
@@ -673,7 +670,7 @@ Xcodeを開き、`File -> New -> Project`より新規プロジェクトを作成
 
 ![](https://www.evernote.com/shard/s324/sh/a556a1cc-c294-4715-b005-e065ae517ed8/f361ef8efcbe54c2980bd9afd147db35/res/ddd6e97c-b900-4558-8f9f-3ffa6b591bc1/skitch.png)  
 
-そしたらファイル一覧から`NewstableViewController`ファイルが追加されたのが確認できるはずです。
+そしたらファイル一覧から`NewsTableViewController`ファイルが追加されたのが確認できるはずです。
 
 ![](https://www.evernote.com/shard/s324/sh/b2a4aded-890c-4dd6-a9b9-820b4b3968d2/543d7331fa5a17cf49762dc38bd75395/res/4d67aab9-c4e9-4fe1-8437-347de469125b/skitch.png)  
 
@@ -800,6 +797,35 @@ class NewsTableViewController: UITableViewController {
     }
 }
 ```
+  
+これで`NewsTableViewController`はひとまず終わりです。次は、記事の詳細を表示する`DetailViewController`を追加していきましょう。追加方法は、`NewsTableViewContoroller`の時と同様に、Menuバーから`File -> New -> File`と選択していき下記の画面を出します。ここでは`Cocoa Touch Class`を選択してください。そして名前を`DetailViewController`、サブクラスを`UIViewController`を継承するようにし、言語をSwiftにして作成します。
+
+![](https://www.evernote.com/shard/s324/sh/46990e51-ef8c-4cd0-b73d-a46c71ea009b/bcc61c6e53f50c691f3952f24a5c24b9/res/f131a48a-5080-47b3-af31-04c2fa689a5f/skitch.png)  
+  
+ここまでが終わったら、StoryBoardを使ってUIの部分を作っていきたいと思います。`Main.storyboard`を開いてください。現在はTableViewControllerとViewControllerの二つがキャンバスの上にあると思います。これらにまずは先ほど上で作った`NewsViewControllerクラス`と`DetailViewControllerクラス`を結びつけていきたいと思います。
+![](https://www.evernote.com/shard/s324/sh/81007ed3-7eae-479a-b1b2-5835d5037b7e/f38ec4aecf97706d447bde3e7bba2fa4/res/92104b0d-5f6a-4924-a8dc-e7feb864bc8e/skitch.png)
+![](https://www.evernote.com/shard/s324/sh/ba1c9e73-7a69-4bab-b3a9-a0cc9565301e/42cefa8948ef56f72ef2547683d218c0/res/db155f6c-a42d-4d0f-a84e-61f8dc8f4753/skitch.png)
+![](https://www.evernote.com/shard/s324/sh/2bb1241e-3906-4667-9d0e-c40bb8d11fb2/77cf9610cecf9184533c539d7694c973/res/857d94da-2bf9-4933-9faf-bb387beaa69b/skitch.png)
+![](https://www.evernote.com/shard/s324/sh/1d62344e-e0a2-4ddb-b6bd-1f080fc04b04/cd155807093d8f882d8238aa657390e8/res/b65c2b68-7002-4a28-9094-9de92f26d2f8/skitch.png)
+![](https://www.evernote.com/shard/s324/sh/f441fc92-7bc3-4e75-8ba0-df4d26f263ed/b7f47619afe520f1/res/641c3227-85ae-4917-8e81-73438f06a611/skitch.png)
+![](https://www.evernote.com/shard/s324/sh/a4773f3c-a91b-446c-a8d5-fd5364c990c4/80cfd538797e5c87/res/89d28e66-1d51-4a99-846c-a858aca5a023/skitch.png)
+![](https://www.evernote.com/shard/s324/sh/ea0248c2-d52c-4285-8f51-da3f7eee24b4/c5daa5ec1585408d1060f174accd7ce3/res/9917dba5-bd92-491c-a560-5f8eb82f0d23/skitch.png)
+![](https://www.evernote.com/shard/s324/sh/e2c98694-feee-4e96-96d1-d4578f3c0c70/df9ffd2c80ea2a1ca346a630b3c6f090/res/31e4809c-22e2-4203-9a45-a1013fcbcb73/skitch.png)
+![](https://www.evernote.com/shard/s324/sh/7b4902f7-e03f-41f8-bc86-3ba39e78cd04/9e5b52460a37bc9bd94b1f248f05e864/res/7f9139bc-bcc5-4aea-a981-aaed9154c52b/skitch.png)
+![](https://www.evernote.com/shard/s324/sh/a200cfee-ddd9-4817-83ed-98b2c2782b15/3a2a1460986d7a3b7fa73d86a4ca2640/res/6366a437-00e1-4ab6-8de7-3175f5d03b1a/skitch.png)
+![](https://www.evernote.com/shard/s324/sh/61ebecd1-aa7e-473b-8a78-448bf63f365b/735e0111ef2ceac29a5a4270f10e27cf/res/161060a3-1e88-4009-8007-3a1d79be2bb9/skitch.png)
+![](https://www.evernote.com/shard/s324/sh/d074eb08-7461-4b7c-af77-b13c5d589db9/efeaaaf140bbdaa1256cb8c57e6dbcc9/res/6a1df7bc-8cd6-49a7-929a-6243a8649aac/skitch.png)
+![](https://www.evernote.com/shard/s324/sh/9ab5e4ea-b794-4bc4-9c72-b3b29ac05c28/7814504ea4bcecb9455b7e29154c7b0b/res/b2fc5ceb-f34f-4e80-b3bd-615df5016b4d/skitch.png)
+![](https://www.evernote.com/shard/s324/sh/45829b3a-96ed-44ce-8a27-8515bc815d43/01541bf13f391a8a9590aad39036680b/res/36dc31e1-9f93-4825-8aec-95fc52fd2848/skitch.png)
+![](https://www.evernote.com/shard/s324/sh/a4136bb0-2d87-463a-ae47-c59002ec3191/fc95012474bfc471ccefe6dc8eb0eae9/res/be68bf92-1f1c-4052-ae1f-35dc36d2990f/skitch.png)
+![](https://www.evernote.com/shard/s324/sh/9e0b681c-9392-47d1-b268-7b47031db3ef/be7e1103c5d6ac97da46169a6a0dcbb8/res/ddb3293c-6a3d-4b7a-89e6-511206686eb4/skitch.png)
+![](https://www.evernote.com/shard/s324/sh/d21d7ba5-8820-4a67-b5f2-51efe77a6d6a/2cb50c2e323ff646ee588e11ef1a8ccd/res/6fe1ffa3-45df-4f7f-8587-1889da359ade/skitch.png)
+![](https://www.evernote.com/shard/s324/sh/afc7997f-83b9-41e6-bbe4-26cae70d2fb3/510d121eb936dba2ad58ba3ee9cb5c35/res/65068a71-ade5-4934-a807-906d58e6f851/skitch.png)
+![](https://www.evernote.com/shard/s324/sh/4f4b8f6e-1ea6-4d41-965d-ea23506c5aee/d9542be73fb99fa2da2c14da5aa4550e/res/76ff383d-5821-44b9-8a8c-c5d6e5fb0d48/skitch.png)
+![](https://www.evernote.com/shard/s324/sh/aad588d5-020c-47f7-80c0-fe4edd906239/b00a97c115239c7c41243e5385204cf8/res/e06a9eaa-1bf3-4225-a4aa-7ca1951a9ec3/skitch.png)
+![](https://www.evernote.com/shard/s324/sh/eba8bd76-52aa-4b8e-a8b0-40aa7fa8abf4/7ea1e272fa9e781c4c4f616c06c8c712/res/cc31f2c1-7579-4872-9d82-fef57874f008/skitch.png)
+
+
 ---
 ## 課題
 
