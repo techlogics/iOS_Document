@@ -1,4 +1,4 @@
-# TECH LOGICS WEB開発者養成ドキュメント
+# TECH LOGICS iOS開発者養成ドキュメント
 
 * 【文法】
 
@@ -10,7 +10,7 @@
 
 の下記の4つのパターンを用意している。
 
-->[WEB版](https://github.com/techlogics/WEB_Document)
+### [WEB版](https://github.com/techlogics/WEB_Document)もご覧ください
 
 ==============
 
