@@ -16,34 +16,35 @@
 
 ## 入門
 
-* 初めて触る人向け
+##### 初めて触る人向け
 
 - [初めてのiOS開発](https://github.com/techlogics/iOS_Document/blob/master/TechLogics_iOSAppTrainingDocument.md)
 
 
+
 ## 開発フロー/運用/保守性
 
-* 開発の流れ、運用向けのコーディング方法
+##### 開発の流れ、運用向けのコーディング方法
 
 - [開発フロー/運用/保守性](https://github.com/techlogics/iOS_Document/)
 
 
 ## よく使う実践的コード
 
-* よく躓いたりすることなど、案件をしてわからなくなってもこれ見ながらできるようにする
+##### よく躓いたりすることなど、案件をしてわからなくなってもこれ見ながらできるようにする
 
-->[よく使う実践的コード](https://github.com/techlogics/iOS_Document/)
+- [よく使う実践的コード](https://github.com/techlogics/iOS_Document/)
 
 ## ライブラリ
 
-* どれがどの役割をできるかの確認
+##### どれがどの役割をできるかの確認
 
-->[ライブラリ](https://github.com/techlogics/iOS_Document/)
+- [ライブラリ](https://github.com/techlogics/iOS_Document/)
 
 ---
 ##編集者
 
-* [Kenichi Saito](https://github.com/tkcfjips/)
+###[Kenichi Saito](https://github.com/tkcfjips/)
 
 このTECH LOGICS養成ドキュメントmdはTECH LOGICSメンバーに関わらず、<br>
 様々な方の意見を頂きながら__オープンソースな日本一のプログラミングドキュメント__を作成しております。<br>
@@ -66,7 +67,7 @@
 
 ==============
 ##運営
-[株式会社Far Connection](http://farconnection.jp)
+[株式会社Far Connection](http://farconnection.jp)  
 [プログラミングコミュニティTECH LOGICS](http://techlogics.link)
 
 
