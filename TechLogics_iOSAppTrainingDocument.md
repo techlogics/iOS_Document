@@ -802,14 +802,32 @@ class NewsTableViewController: UITableViewController {
 
 ![](https://www.evernote.com/shard/s324/sh/46990e51-ef8c-4cd0-b73d-a46c71ea009b/bcc61c6e53f50c691f3952f24a5c24b9/res/f131a48a-5080-47b3-af31-04c2fa689a5f/skitch.png)  
   
-ここまでが終わったら、StoryBoardを使ってUIの部分を作っていきたいと思います。`Main.storyboard`を開いてください。現在はTableViewControllerとViewControllerの二つがキャンバスの上にあると思います。これらにまずは先ほど上で作った`NewsViewControllerクラス`と`DetailViewControllerクラス`を結びつけていきたいと思います。
+ここまでが終わったら、StoryBoardを使ってUIの部分を作っていきたいと思います。`Main.storyboard`を開いてください。現在はTableViewControllerとViewControllerの二つがキャンバスの上にあると思います。これらにまずは先ほど上で作った`NewsTableViewControllerクラス`と`DetailViewControllerクラス`を結びつけていきたいと思います。
+
+`UITableViewController`を選択し、`Class`の部分を`NewsTableViewController`にしてください。
 ![](https://www.evernote.com/shard/s324/sh/81007ed3-7eae-479a-b1b2-5835d5037b7e/f38ec4aecf97706d447bde3e7bba2fa4/res/92104b0d-5f6a-4924-a8dc-e7feb864bc8e/skitch.png)
+
+次に、`UIViewController`を選択し、`Class`の部分を`DetailViewController`にしてください。これでソースファイルとStoryboardが結びつけられました。
 ![](https://www.evernote.com/shard/s324/sh/ba1c9e73-7a69-4bab-b3a9-a0cc9565301e/42cefa8948ef56f72ef2547683d218c0/res/db155f6c-a42d-4d0f-a84e-61f8dc8f4753/skitch.png)
+
+ここからは、UIパーツなどを配置していきたいとおもいます。まずは、`NewsTableViewController`を選択しセルの部分を選択してください。次にセルの高さを160に設定しましょう。
 ![](https://www.evernote.com/shard/s324/sh/2bb1241e-3906-4667-9d0e-c40bb8d11fb2/77cf9610cecf9184533c539d7694c973/res/857d94da-2bf9-4933-9faf-bb387beaa69b/skitch.png)
+
+次はセルに表示させる画像を配置しましょう。パーツライブラリから`UIImageView`をセルの上に配置します。X座標を8、Y座標を10で幅と高さは140に設定しましょう。
 ![](https://www.evernote.com/shard/s324/sh/1d62344e-e0a2-4ddb-b6bd-1f080fc04b04/cd155807093d8f882d8238aa657390e8/res/b65c2b68-7002-4a28-9094-9de92f26d2f8/skitch.png)
+
+記事を表示させるためのラベルも配置します。`UILabel`をライブラリからセル上に配置してください。X座標は156、Y座標は30にし、幅を436高さを120に設定してください。
 ![](https://www.evernote.com/shard/s324/sh/f441fc92-7bc3-4e75-8ba0-df4d26f263ed/b7f47619afe520f1/res/641c3227-85ae-4917-8e81-73438f06a611/skitch.png)
+
+記事のタイトルを表示させるラベルも用意します。記事ラベルと同様に配置していきます。X座標は156Y座標は10、幅は436高さは20で設定しましょう。
 ![](https://www.evernote.com/shard/s324/sh/a4773f3c-a91b-446c-a8d5-fd5364c990c4/80cfd538797e5c87/res/89d28e66-1d51-4a99-846c-a858aca5a023/skitch.png)
+
+次は記事を更新するためのボタン配置します。ライブラリから`Bar Button Item`を`NewsTableViewContorller`の右上のNavigation Barに配置しましょう。そして`Idetifier`を`refresh`にしてあげます。
 ![](https://www.evernote.com/shard/s324/sh/ea0248c2-d52c-4285-8f51-da3f7eee24b4/c5daa5ec1585408d1060f174accd7ce3/res/9917dba5-bd92-491c-a560-5f8eb82f0d23/skitch.png)
+
+次に`AutoLayout`について説明します。この機能は以前からあったのですが、あまり使うことはありませんでした。しかし、2014/9/19日よりiPhone6が発売されたことで必須の機能になりました。iPhoneの画面の種類が増えたことにより、ただStoryboardにパーツを配置していくだけでは、端末が変わった時にレイアウトが変わってしまいます。`AutoLayout`はそれを解決するために利用し、どの端末の画面サイズにも対応できる、柔軟なユーザーインターフェイスを作ることができます。　　
+
+`AutoLayout`では`制約:Constraints`という考え方をします。まずは制約をつけてみましょう。先ほど配置した`UIImageView`を選択してください。そしてキャンバスの右下の4つ並んでるアイコンが`AutoLayout`を管理するもので、このアイコン左から2番目のアイコンを選択してください。ポップアップが現れるとおもいます。
 ![](https://www.evernote.com/shard/s324/sh/e2c98694-feee-4e96-96d1-d4578f3c0c70/df9ffd2c80ea2a1ca346a630b3c6f090/res/31e4809c-22e2-4203-9a45-a1013fcbcb73/skitch.png)
 ![](https://www.evernote.com/shard/s324/sh/7b4902f7-e03f-41f8-bc86-3ba39e78cd04/9e5b52460a37bc9bd94b1f248f05e864/res/7f9139bc-bcc5-4aea-a981-aaed9154c52b/skitch.png)
 ![](https://www.evernote.com/shard/s324/sh/a200cfee-ddd9-4817-83ed-98b2c2782b15/3a2a1460986d7a3b7fa73d86a4ca2640/res/6366a437-00e1-4ab6-8de7-3175f5d03b1a/skitch.png)
