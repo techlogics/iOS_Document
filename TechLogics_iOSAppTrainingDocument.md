@@ -822,25 +822,51 @@ class NewsTableViewController: UITableViewController {
 記事のタイトルを表示させるラベルも用意します。記事ラベルと同様に配置していきます。X座標は156Y座標は10、幅は436高さは20で設定しましょう。
 ![](https://www.evernote.com/shard/s324/sh/a4773f3c-a91b-446c-a8d5-fd5364c990c4/80cfd538797e5c87/res/89d28e66-1d51-4a99-846c-a858aca5a023/skitch.png)
 
+次はセルに配置したアイテムごとに識別するためのタグをつけていきたいと思います。`UIImageView`を選択して`Tag`の部分を`1`に設定しましょう。また同様に記事ラベルとタイトルラベルの設定してください。
+![](https://www.evernote.com/shard/s324/sh/45829b3a-96ed-44ce-8a27-8515bc815d43/01541bf13f391a8a9590aad39036680b/res/36dc31e1-9f93-4825-8aec-95fc52fd2848/skitch.png)
+![](https://www.evernote.com/shard/s324/sh/a4136bb0-2d87-463a-ae47-c59002ec3191/fc95012474bfc471ccefe6dc8eb0eae9/res/be68bf92-1f1c-4052-ae1f-35dc36d2990f/skitch.png)
+![](https://www.evernote.com/shard/s324/sh/9e0b681c-9392-47d1-b268-7b47031db3ef/be7e1103c5d6ac97da46169a6a0dcbb8/res/ddb3293c-6a3d-4b7a-89e6-511206686eb4/skitch.png)
+
 次は記事を更新するためのボタン配置します。ライブラリから`Bar Button Item`を`NewsTableViewContorller`の右上のNavigation Barに配置しましょう。そして`Idetifier`を`refresh`にしてあげます。
 ![](https://www.evernote.com/shard/s324/sh/ea0248c2-d52c-4285-8f51-da3f7eee24b4/c5daa5ec1585408d1060f174accd7ce3/res/9917dba5-bd92-491c-a560-5f8eb82f0d23/skitch.png)
 
 次に`AutoLayout`について説明します。この機能は以前からあったのですが、あまり使うことはありませんでした。しかし、2014/9/19日よりiPhone6が発売されたことで必須の機能になりました。iPhoneの画面の種類が増えたことにより、ただStoryboardにパーツを配置していくだけでは、端末が変わった時にレイアウトが変わってしまいます。`AutoLayout`はそれを解決するために利用し、どの端末の画面サイズにも対応できる、柔軟なユーザーインターフェイスを作ることができます。　　
 
-`AutoLayout`では`制約:Constraints`という考え方をします。まずは制約をつけてみましょう。先ほど配置した`UIImageView`を選択してください。そしてキャンバスの右下の4つ並んでるアイコンが`AutoLayout`を管理するもので、このアイコン左から2番目のアイコンを選択してください。ポップアップが現れるとおもいます。
+`AutoLayout`では`制約:Constraints`という考え方をします。まずは制約をつけてみましょう。先ほど配置した`UIImageView`を選択してください。そしてキャンバスの右下の4つ並んでるアイコンが`AutoLayout`を管理するもので、このアイコン左から2番目のアイコンを選択してください。ポップアップが現れるとおもいます。上の方に白い四角形に4辺からからピンが出ています。これらは選択したアイテムのマージンを管理するものです。今回は`UIImageView`を配置した位置から動かしたくないので、4つのピンを全て選択してください。次の項目では幅と高さに制約をつけることができます。`UIImageView`の大きさは変えたくないので、`width`と`height`にチェックをつけましょう。
 ![](https://www.evernote.com/shard/s324/sh/e2c98694-feee-4e96-96d1-d4578f3c0c70/df9ffd2c80ea2a1ca346a630b3c6f090/res/31e4809c-22e2-4203-9a45-a1013fcbcb73/skitch.png)
+
+次は、記事ラベルに制約をつけていきましょう。基本的に`UIImageView`の時と変わりません。まずは4辺のマージンを固定します。また記事ラベルは高さを変えたくないので高さを固定します。横幅はデバイスによって変わるので`width`は今回指定しません。
 ![](https://www.evernote.com/shard/s324/sh/7b4902f7-e03f-41f8-bc86-3ba39e78cd04/9e5b52460a37bc9bd94b1f248f05e864/res/7f9139bc-bcc5-4aea-a981-aaed9154c52b/skitch.png)
+
+最後にタイトルラベルに制約をつけましょう。タイトルラベルは記事ラベルと全く同様の設定で構いません、自分の制約を設定してみましょう。
 ![](https://www.evernote.com/shard/s324/sh/a200cfee-ddd9-4817-83ed-98b2c2782b15/3a2a1460986d7a3b7fa73d86a4ca2640/res/6366a437-00e1-4ab6-8de7-3175f5d03b1a/skitch.png)
+
+さて、ここまでセルに色々配置して設定してきましたが、いまのままではコードからセルにアクセスすることができません。そこでセルを識別するための名前をつけてあげる必要があります。セルを選択し`Idetifier`を`NewsCell`にしてあげてください。これで後ほど書くコードから今名前をつけたセルにアクセスすることができます。
 ![](https://www.evernote.com/shard/s324/sh/61ebecd1-aa7e-473b-8a78-448bf63f365b/735e0111ef2ceac29a5a4270f10e27cf/res/161060a3-1e88-4009-8007-3a1d79be2bb9/skitch.png)
+
+次は、`Segue`について説明したいとおもいます。例えばニュース一覧のセルをタップするとその詳細画面に飛びます。また設定ボタンをタップすると次は設定画面に飛びます。これらはともに画面が遷移しています。この遷移に名前をつけることで遷移元の画面から遷移先に値を渡したい時などに役に立ちます。
+
+では、まずは遷移を実際に追加しましょう。`NewsTableViewController`選択し`DetailViewController`に引っ張りましょう。そうすると二つの間に矢印が追加されます。これが`Segue`です。
 ![](https://www.evernote.com/shard/s324/sh/d074eb08-7461-4b7c-af77-b13c5d589db9/efeaaaf140bbdaa1256cb8c57e6dbcc9/res/6a1df7bc-8cd6-49a7-929a-6243a8649aac/skitch.png)
+
+次に先ほど追加した`Segue`を選択して識別するラベルを追加していきます。`Idetifier`に`DetailSegue`と入力しましょう。
 ![](https://www.evernote.com/shard/s324/sh/9ab5e4ea-b794-4bc4-9c72-b3b29ac05c28/7814504ea4bcecb9455b7e29154c7b0b/res/b2fc5ceb-f34f-4e80-b3bd-615df5016b4d/skitch.png)
-![](https://www.evernote.com/shard/s324/sh/45829b3a-96ed-44ce-8a27-8515bc815d43/01541bf13f391a8a9590aad39036680b/res/36dc31e1-9f93-4825-8aec-95fc52fd2848/skitch.png)
-![](https://www.evernote.com/shard/s324/sh/a4136bb0-2d87-463a-ae47-c59002ec3191/fc95012474bfc471ccefe6dc8eb0eae9/res/be68bf92-1f1c-4052-ae1f-35dc36d2990f/skitch.png)
-![](https://www.evernote.com/shard/s324/sh/9e0b681c-9392-47d1-b268-7b47031db3ef/be7e1103c5d6ac97da46169a6a0dcbb8/res/ddb3293c-6a3d-4b7a-89e6-511206686eb4/skitch.png)
+
+`DetailViewController`にもパーツを配置していきましょう。まずは記事を共有するためのボタンです。はじめに`Navigation Item`を上部のNavigation BarにD&Dしましょう。次に`Bar Button Item`を右上に配置します。そしてそのボタンの`Identifier`を`Action`にしてあげると見慣れたiOSの共有ボタンになるとおもいます。
 ![](https://www.evernote.com/shard/s324/sh/d21d7ba5-8820-4a67-b5f2-51efe77a6d6a/2cb50c2e323ff646ee588e11ef1a8ccd/res/6fe1ffa3-45df-4f7f-8587-1889da359ade/skitch.png)
+
+これで最後のパーツになります。`Web View`はウェブページを表示するためのパーツでブラウザアプリを作るときにも使います。今回はこれを画面目一杯に配置しましょう。
 ![](https://www.evernote.com/shard/s324/sh/afc7997f-83b9-41e6-bbe4-26cae70d2fb3/510d121eb936dba2ad58ba3ee9cb5c35/res/65068a71-ade5-4934-a807-906d58e6f851/skitch.png)
+
+いよいよStoryboardの作業も最後です。今まで配置してきたパーツをコードとつなげます。まず、Xcodeの画面の右上に![](https://www.evernote.com/shard/s324/sh/270f9fb1-1493-49ee-8c0c-5e985c15e1ee/5a13b5ecd7f557fcebdf1f6c5cff8773/deep/0/Main.storyboard.png)このようなアイコンが並んでいると思いますが、真ん中のものを選んでください。そうすることでStoryboardとソースコードを同時に見ることができます。
+
+`NewsTableViewController`の配置した更新ボタンを選択肢Controlキーを押しながらソースコードの下の方の引っ張っていきます。画像の位置辺りでいいです。
 ![](https://www.evernote.com/shard/s324/sh/4f4b8f6e-1ea6-4d41-965d-ea23506c5aee/d9542be73fb99fa2da2c14da5aa4550e/res/76ff383d-5821-44b9-8a8c-c5d6e5fb0d48/skitch.png)
+
+次にポップアップが出ると思いますがこれの`Collection`の部分を`Action`、`Name`を`refresh`にして`Connect`を選択しましょう。
 ![](https://www.evernote.com/shard/s324/sh/aad588d5-020c-47f7-80c0-fe4edd906239/b00a97c115239c7c41243e5385204cf8/res/e06a9eaa-1bf3-4225-a4aa-7ca1951a9ec3/skitch.png)
+
+最後に`DetailViewController`に配置した`Web View`もコードとつなげてあげます。上と同様にやってみてください。なお`Web View`は`Collection`を`Outlet`、`Name`を`webView`に設定しましょう。
 ![](https://www.evernote.com/shard/s324/sh/eba8bd76-52aa-4b8e-a8b0-40aa7fa8abf4/7ea1e272fa9e781c4c4f616c06c8c712/res/cc31f2c1-7579-4872-9d82-fef57874f008/skitch.png)
 
 
