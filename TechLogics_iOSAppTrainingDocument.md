@@ -873,7 +873,7 @@ class NewsTableViewController: UITableViewController {
 ---
 ## 課題
 
-課題では、iPhone アプリを作ってもらいます。一からアプリを作成し、できれば実機で動作させましょう。
+課題では、iPhoneアプリを作ってもらいます。一からアプリを作成し、できれば実機で動作させましょう。
 
 ### 課題
 
