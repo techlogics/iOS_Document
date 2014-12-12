@@ -869,6 +869,11 @@ class NewsTableViewController: UITableViewController {
 最後に`DetailViewController`に配置した`Web View`もコードとつなげてあげます。上と同様にやってみてください。なお`Web View`は`Collection`を`Outlet`、`Name`を`webView`に設定しましょう。
 ![](https://www.evernote.com/shard/s324/sh/eba8bd76-52aa-4b8e-a8b0-40aa7fa8abf4/7ea1e272fa9e781c4c4f616c06c8c712/res/cc31f2c1-7579-4872-9d82-fef57874f008/skitch.png)
 
+ここからはソースコードをどんどん書いていきましょう。まずは今回扱うデータについてです。今回はGoogle Ajax Feed API
+`https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=RSSのURL&num=記事数`
+を使ってRSSをJSONに変換してSwiftで扱いたいと思います。Lig.Incさんのブログの記事をとってみましょう。LigさんのブログのRSSフィードは`http://liginc.co.jp/feed`です。また記事数は20件くらいにしましょう。そしたら以下のようなURLができます。クリックしてみると取得できていることがわかります。   
+[https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=http://liginc.co.jp/feed&num=20](https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=http://liginc.co.jp/feed&num=20)
+
 
 ---
 ## 課題
