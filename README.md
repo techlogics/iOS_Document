@@ -26,8 +26,22 @@
 
 ##### 開発の流れ、運用向けのコーディング方法
 
-- [開発フロー/運用/保守性](https://github.com/techlogics/iOS_Document/)
 
+- ##### ドキュメント
+
+	- [Apple Developer Center](http://developer.apple.com/ios/)
+  		- 公式ドキュメント
+	- [日本語ドキュメント](https://developer.apple.com/jp/devcenter/ios/library/japanese.html)
+	  	- 公式ドキュメントの公式日本語訳。
+- ##### デバッグの方法
+	-  `NSLog`
+	- `println`
+	- デバッガーとBreak Point
+		
+		- Break Pointを設定することで実行中のプログラムを特定の位置で止めることができ、XcodeからBreak Pointを操作できます。
+![Break Point](https://www.evernote.com/shard/s324/sh/a00915b6-af19-4b0b-bae6-69d5bd95a4b8/92fda355a0d4243c/res/f59ddf16-27e3-4879-9de7-8f422d098a5f/debug.png)
+	- 静的解析
+		- Xcodeのメニューから `Run -> Analyze` を実行することで、静的解析が行われ、問題が起こり得る場所を事前に教えてくれます。
 
 ## よく使う実践的コード
 

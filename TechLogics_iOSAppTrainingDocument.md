@@ -873,7 +873,250 @@ class NewsTableViewController: UITableViewController {
 `https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=RSSのURL&num=記事数`
 を使ってRSSをJSONに変換してSwiftで扱いたいと思います。Lig.Incさんのブログの記事をとってみましょう。LigさんのブログのRSSフィードは`http://liginc.co.jp/feed`です。また記事数は20件くらいにしましょう。そしたら以下のようなURLができます。クリックしてみると取得できていることがわかります。   
 [https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=http://liginc.co.jp/feed&num=20](https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=http://liginc.co.jp/feed&num=20)
+```json
+{
+    "responseData": {
+        "feed": {
+            "author": "", 
+            "description": "", 
+            "entries": [
+                {
+                    "author": "LIGブログ編集部", 
+                    "categories": [
+                        "お知らせ", 
+                        "その他", 
+                        "ニュース"
+                    ], 
+                    "content": "<p>こんにちは！　はじまりました「今週のLIGブログまとめ」、初回は編集部より朽木がお送りします。 さて、僕は今年で28歳になるのですが、アドディレクターのきょうへいが同い年で、わりと仲良しです。 そんなきょうへいですが、ブ […]</p>
+<p>The post <a rel="nofollow" href="http://liginc.co.jp/news/notice/other-notice/135799">佐藤可士和さんインタビュー、仕事をサボる菊池【今週のLIGブログ】</a> appeared first on <a rel="nofollow" href="http://liginc.co.jp">株式会社LIG</a>.</p>", 
+                    "contentSnippet": "こんにちは！　はじまりました「今週のLIGブログまとめ」、初回は編集部より朽木がお送りします。 さて、僕は今年で28歳になるのですが、アドディレクターのきょうへいが同い年で、わりと仲良しです。 そんなきょうへいですが、ブ [&#8230;]
+The ...", 
+                    "link": "http://liginc.co.jp/news/notice/other-notice/135799", 
+                    "publishedDate": "Fri, 12 Dec 2014 22:00:11 -0800", 
+                    "title": "佐藤可士和さんインタビュー、仕事をサボる菊池【今週のLIGブログ】"
+                }, 
+                {
+                    "author": "朽木誠一郎", 
+                    "categories": [
+                        "PR", 
+                        "おもしろ"
+                    ], 
+                    "content": "<p>こんにちは、メディア事業部の朽木です。 新しくしたいパソコンや、役目を終えた家具家電、買ったけど着なかった服・・・ 捨ててもいいけど、捨てるのにはちょっと抵抗がある、そんなモノがみなさんのお部屋にはありませんか？ &amp;nb […]</p>
+<p>The post <a rel="nofollow" href="http://liginc.co.jp/omoshiro/pr-omoshiro/132156">ゴミ屋敷のモノを全部買取してもらって、綺麗な部屋になるまで断捨離した話</a> appeared first on <a rel="nofollow" href="http://liginc.co.jp">株式会社LIG</a>.</p>", 
+                    "contentSnippet": "こんにちは、メディア事業部の朽木です。 新しくしたいパソコンや、役目を終えた家具家電、買ったけど着なかった服・・・ 捨ててもいいけど、捨てるのにはちょっと抵抗がある、そんなモノがみなさんのお部屋にはありませんか？ &#038;nb ...", 
+                    "link": "http://liginc.co.jp/omoshiro/pr-omoshiro/132156", 
+                    "publishedDate": "Thu, 11 Dec 2014 17:00:05 -0800", 
+                    "title": "ゴミ屋敷のモノを全部買取してもらって、綺麗な部屋になるまで断捨離した話"
+                }, 
+                {
+                    "author": "づや", 
+                    "categories": [
+                        "JavaScript", 
+                        "Web制作", 
+                        "その他"
+                    ], 
+                    "content": "<p>こんにちは、CTOのづやです。 前回はTwenn系の使い方について紹介しましたが、今回はTimeline系の使い方について紹介していきたいと思います。 こちらには読んで字の如く、いろいろいろいろなアニメーションをタイムラ […]</p>
+<p>The post <a rel="nofollow" href="http://liginc.co.jp/web/js/other-js/131748">アニメーションに便利なJavaScriptライブラリTweenMaxを使ってみる（その2）</a> appeared first on <a rel="nofollow" href="http://liginc.co.jp">株式会社LIG</a>.</p>", 
+                    "contentSnippet": "こんにちは、CTOのづやです。 前回はTwenn系の使い方について紹介しましたが、今回はTimeline系の使い方について紹介していきたいと思います。 こちらには読んで字の如く、いろいろいろいろなアニメーションをタイムラ [&#8230;]
+The ...", 
+                    "link": "http://liginc.co.jp/web/js/other-js/131748", 
+                    "publishedDate": "Thu, 11 Dec 2014 15:00:49 -0800", 
+                    "title": "アニメーションに便利なJavaScriptライブラリTweenMaxを使ってみる（その2）"
+                }, 
+                {
+                    "author": "段田", 
+                    "categories": [
+                        "Web制作", 
+                        "まとめ", 
+                        "アプリ", 
+                        "ソフト・ツール"
+                    ], 
+                    "content": "<p>みなさんこんにちは、段田です。 いきなりですが、みなさん漫画って何で読まれてますか？　紙？　電子書籍？ 僕は以下の3つ理由からもっぱら電子書籍派になりました。 iPhone6 Plusを買ったことで画面サイズが大きくなり […]</p>
+<p>The post <a rel="nofollow" href="http://liginc.co.jp/web/tool/app/130571">漫画をダウンロードしてiPhone＆Androidで持ち歩ける電子書籍アプリおすすめ30選</a> appeared first on <a rel="nofollow" href="http://liginc.co.jp">株式会社LIG</a>.</p>", 
+                    "contentSnippet": "みなさんこんにちは、段田です。 いきなりですが、みなさん漫画って何で読まれてますか？　紙？　電子書籍？ 僕は以下の3つ理由からもっぱら電子書籍派になりました。 iPhone6 Plusを買ったことで画面サイズが大きくなり [&#8230;]
+The ...", 
+                    "link": "http://liginc.co.jp/web/tool/app/130571", 
+                    "publishedDate": "Thu, 11 Dec 2014 15:00:34 -0800", 
+                    "title": "漫画をダウンロードしてiPhone＆Androidで持ち歩ける電子書籍アプリおすすめ30選"
+                }, 
+                {
+                    "author": "姐さん", 
+                    "categories": [
+                        "Illustrator", 
+                        "Photoshop", 
+                        "Web制作", 
+                        "ウェブデザイン"
+                    ], 
+                    "content": "<p>こんにちは、デザイナーの白浜です。 今回は人気のポリゴンスタイルの画像をPhotoshopとIllustratorで作成する方法をご紹介したいと思います。 参考サイト まず初めに今回の参考サイトから。 【Photosho […]</p>
+<p>The post <a rel="nofollow" href="http://liginc.co.jp/web/design/photoshop/133405">PhotoshopとIllustratorで画像をポリゴン風に加工する方法</a> appeared first on <a rel="nofollow" href="http://liginc.co.jp">株式会社LIG</a>.</p>", 
+                    "contentSnippet": "こんにちは、デザイナーの白浜です。 今回は人気のポリゴンスタイルの画像をPhotoshopとIllustratorで作成する方法をご紹介したいと思います。 参考サイト まず初めに今回の参考サイトから。 【Photosho [&#8230;]
+The ...", 
+                    "link": "http://liginc.co.jp/web/design/photoshop/133405", 
+                    "publishedDate": "Thu, 11 Dec 2014 15:00:16 -0800", 
+                    "title": "PhotoshopとIllustratorで画像をポリゴン風に加工する方法"
+                }, 
+                {
+                    "author": "勢古口", 
+                    "categories": [
+                        "お役立ち情報", 
+                        "まとめ", 
+                        "ライフスタイル"
+                    ], 
+                    "content": "<p>こんにちは。コワーキングスペース＆シェアオフィスのいいオフィス管理人、勢古口です。 いいオフィスには大きなキッチンがあるので、食を通じたイベントも多数開催しております。勉強会のあとの懇親会など、みんなで料理を一緒に食べる […]</p>
+<p>The post <a rel="nofollow" href="http://liginc.co.jp/life/useful-info/132495">手作り料理で貸切パーティや懇親会を！キッチンのあるレンタルスペースまとめ【渋谷編】</a> appeared first on <a rel="nofollow" href="http://liginc.co.jp">株式会社LIG</a>.</p>", 
+                    "contentSnippet": "こんにちは。コワーキングスペース＆シェアオフィスのいいオフィス管理人、勢古口です。 いいオフィスには大きなキッチンがあるので、食を通じたイベントも多数開催しております。勉強会のあとの懇親会など、みんなで料理を一緒に食べる [&#8230;]
+The ...", 
+                    "link": "http://liginc.co.jp/life/useful-info/132495", 
+                    "publishedDate": "Wed, 10 Dec 2014 15:00:52 -0800", 
+                    "title": "手作り料理で貸切パーティや懇親会を！キッチンのあるレンタルスペースまとめ【渋谷編】"
+                }, 
+                {
+                    "author": "野田", 
+                    "categories": [
+                        "Web制作", 
+                        "その他", 
+                        "まとめ", 
+                        "ウェブデザイン"
+                    ], 
+                    "content": "<p>こんにちは。野田です。 突然ですが、僕はとても飽き性です。なので、仕事もプライベートも楽しいこと重視で動いています。 すべてが楽しいことではないと分かっているのですが、どんなことでも楽しくなるように、常に心がけています。 […]</p>
+<p>The post <a rel="nofollow" href="http://liginc.co.jp/web/design/other-design/133018">デザイナーのためのテスト・クイズまとめ「フォント当て」「カーニング」など</a> appeared first on <a rel="nofollow" href="http://liginc.co.jp">株式会社LIG</a>.</p>", 
+                    "contentSnippet": "こんにちは。野田です。 突然ですが、僕はとても飽き性です。なので、仕事もプライベートも楽しいこと重視で動いています。 すべてが楽しいことではないと分かっているのですが、どんなことでも楽しくなるように、常に心がけています。 [&#8230;]
+The ...", 
+                    "link": "http://liginc.co.jp/web/design/other-design/133018", 
+                    "publishedDate": "Wed, 10 Dec 2014 15:00:20 -0800", 
+                    "title": "デザイナーのためのテスト・クイズまとめ「フォント当て」「カーニング」など"
+                }, 
+                {
+                    "author": "ハマ", 
+                    "categories": [
+                        "ビジネス", 
+                        "ライフスタイル"
+                    ], 
+                    "content": "<p>こんにちは、メディア事業部のハマです。 私は以前技術系の出版社で雑誌記者をやっていたことがあるのですが、当時から現在に至るまで、どうにも気が進まない作業の中の1つに「取材音声の文字起こし原稿を編集する」というものがありま […]</p>
+<p>The post <a rel="nofollow" href="http://liginc.co.jp/life/business/132398">元雑誌記者が考える、文字・テープ起こし原稿を編集するための4つのステップ</a> appeared first on <a rel="nofollow" href="http://liginc.co.jp">株式会社LIG</a>.</p>", 
+                    "contentSnippet": "こんにちは、メディア事業部のハマです。 私は以前技術系の出版社で雑誌記者をやっていたことがあるのですが、当時から現在に至るまで、どうにも気が進まない作業の中の1つに「取材音声の文字起こし原稿を編集する」というものがありま [&#8230;]
+The ...", 
+                    "link": "http://liginc.co.jp/life/business/132398", 
+                    "publishedDate": "Wed, 10 Dec 2014 15:00:12 -0800", 
+                    "title": "元雑誌記者が考える、文字・テープ起こし原稿を編集するための4つのステップ"
+                }, 
+                {
+                    "author": "そめひこ", 
+                    "categories": [
+                        "おもしろ", 
+                        "ステマ", 
+                        "殿堂入り"
+                    ], 
+                    "content": "<p>こんにちは、LIGでメディア事業部のマネージャーをやっている寺倉そめひこです。 突然ですが、僕ってイケメンじゃないですか？ 会社に入って少し体重は増えましたが、まだまだイケると思うんです。でも、自分でイケメンだって言って […]</p>
+<p>The post <a rel="nofollow" href="http://liginc.co.jp/omoshiro/sutema/131076">企業の新しいファン作り企画・イケメンチップスに参加できませんでした。</a> appeared first on <a rel="nofollow" href="http://liginc.co.jp">株式会社LIG</a>.</p>", 
+                    "contentSnippet": "こんにちは、LIGでメディア事業部のマネージャーをやっている寺倉そめひこです。 突然ですが、僕ってイケメンじゃないですか？ 会社に入って少し体重は増えましたが、まだまだイケると思うんです。でも、自分でイケメンだって言って [&#8230;]
+The ...", 
+                    "link": "http://liginc.co.jp/omoshiro/sutema/131076", 
+                    "publishedDate": "Tue, 09 Dec 2014 17:00:21 -0800", 
+                    "title": "企業の新しいファン作り企画・イケメンチップスに参加できませんでした。"
+                }, 
+                {
+                    "author": "John", 
+                    "categories": [
+                        "まとめ", 
+                        "ビジネス", 
+                        "ライフスタイル"
+                    ], 
+                    "content": "<p>こんにちは。ジョンです。12月からブランディングチームという部署に異動し、コピーライターとディレクターをしています。 過去、ぼくが言われてきたセリフで多かったのが「いいコピーって何？」と「オレ（ワタシ）のコピー書いてよ」 […]</p>
+<p>The post <a rel="nofollow" href="http://liginc.co.jp/life/matome-life/131357">事例から学ぶ、優れたキャッチコピー10選。 第一回「コピーされるコピー」</a> appeared first on <a rel="nofollow" href="http://liginc.co.jp">株式会社LIG</a>.</p>", 
+                    "contentSnippet": "こんにちは。ジョンです。12月からブランディングチームという部署に異動し、コピーライターとディレクターをしています。 過去、ぼくが言われてきたセリフで多かったのが「いいコピーって何？」と「オレ（ワタシ）のコピー書いてよ」 [&#8230;]
+The ...", 
+                    "link": "http://liginc.co.jp/life/matome-life/131357", 
+                    "publishedDate": "Tue, 09 Dec 2014 15:00:59 -0800", 
+                    "title": "事例から学ぶ、優れたキャッチコピー10選。 第一回「コピーされるコピー」"
+                }
+            ], 
+            "feedUrl": "http://liginc.co.jp/feed", 
+            "link": "http://liginc.co.jp", 
+            "title": "株式会社LIG", 
+            "type": "rss20"
+        }
+    }, 
+    "responseDetails": null, 
+    "responseStatus": 200
+}
+```
+こんな感じのデータが返ってくるのでこれを叩いてTableViewに表示させてみましょう。まずはURLを保持する変数と記事を保持する配列を宣言しましょう。`NewsTableViewController.swift`を開いて以下の二つの変数を追加しましょう。
+```swift
+import UIKit
 
+class NewsTableViewController: UITableViewController {
+    
+    // APIリクエスト用のURL
+    let URLString = NSURL(string:"https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=http://liginc.co.jp/feed&num=20](https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=http://liginc.co.jp/feed&num=20")
+    
+    // 記事用の配列
+    var entries = NSMutableArray()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    ...
+```
+コードを解説します。`NSURL`はウェブのURLを管理するクラスでイニシャライズするには、
+```swift
+NSURL(string:"URLの文字列")
+```
+で初期化することができます。よく使うので覚えておきましょう。  
+次は`entries`配列です。この配列は`NSMutableArray`と言われるクラスで`NSArray`を継承したクラスです。`NSMutableArray`はこちらは可変長なのでいつでも要素を増やしたり減らしたりできます。  
+
+今度は更新ボタンのアクションを書いていきましょう。この関数の中を下記のように編集しましょう。
+```swift
+@IBAction func refresh(sender: AnyObject) {
+        
+        // 記事用の配列の中身を削除
+        self.entries.removeAllObjects()
+        
+        // ダウンロードの準備
+        var downloadDataTask = NSURLSession.sharedSession().dataTaskWithURL(self.URLString!, completionHandler: {data, response, error in
+            
+            // 返ってきたデータをNSDictionaryにキャスト
+            var dictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
+            
+            // 返ってきたJSONのentriesを上のentriesプロバティに代入
+            if var responseData = dictionary["responseData"] as? NSDictionary {
+                if var feed = responseData["feed"] as? NSDictionary {
+                    if var entries = feed["entries"] as? NSArray {
+                        // entries配列をentriesプロパティに追加
+                        self.entries.addObjectsFromArray(entries)
+                    }
+                }
+            }
+            
+            // メインスレッドでテーブルビューを更新
+            dispatch_async(dispatch_get_main_queue(), {
+                self.tableView.reloadData()
+            })
+            
+        })
+        
+        // ダウンロードを開始
+        downloadDataTask.resume()
+    }
+```
+この関数はボタンがタップされるたびに呼び出されます。最初の行では上で宣言した`entries`中身を空にします。次に`NSURLSession`クラスと呼ばれるバックグラウンドで通信するクラスで通信をします。`downloadDataWithTask`という変数にインスタンスを入れてあげましょう。`sharedSession()`は`NSURLSession`のクラスメソッドでデフォルトの設定が適用されます。`dataTaskWithURL`は`NSURL`型のurlと呼ばれる引数を取るインスタンスメソッドでタウンロードが完了すると`completionHandler`が呼び出されます。ダウンロードしたものは`NSData`と型で返ってきます。今度はそれをシリアライズしてあげるためのクラス`NSJSONSerialization`でシリアライズしてから、扱いやすいように`NSDictionary`型にキャストして変数`dictionary`に代入します。キャストするには`as`を使います。  
+```swift
+if var responseData = dictionary["responseData"] as? NSDictionary {
+	if var feed = responseData["feed"] as? NSDictionary {
+		if var entries = feed["entries"] as? NSArray {
+			self.entries.addObjectsFromArray(entries)
+        }
+   	}
+}			
+```
+この部分では返ってきたJSONデータの中の`responseData/feed/entries`を取り出すための処理をしています。
+```swift
+dispatch_async(dispatch_get_main_queue(), {
+	self.tableView.reloadData()
+})
+```
+tableViewでダウンロードしたあとにデータを表示させるには一度tableViewを更新してあげる必要がある。しかしCocoaプログラミングでは画面の表示に関わる処理をするときにはメインスレッドでやってあげる必要がある。一方で先ほどのハンドラーの中ではメインとは別のスレッドで処理が行われている。そこでメインスレッドでtableViewを更新してあげるために`dispatch_async`メソッドを使ってあげます。引数にはメインキューを渡してあげます。そしてその中でtableViewのメソッドの`reloadData()`を呼び出しています。これでデータがダウンロードし終わったらtableViewを更新してくれます。最後に`NSURLSession`の`resume()`メソッドでダウンロードを始めます。
 
 ---
 ## 課題
@@ -886,33 +1129,3 @@ class NewsTableViewController: UITableViewController {
 ### 自由課題
 
 創意工夫をしてよりよいアプリにしてください。
-
-
----
-### デバッグの方法
-
-iOS開発のデバッグの方法を紹介します。
-
-#### `NSLog`
-#### `println`
-これでコンソールに出力されます。
-
-#### デバッガーとBreak Point
-
-Break Pointを設定することで実行中のプログラムを特定の位置で止めることができ、XcodeからBreak Pointを操作できます。
-![Break Point](https://www.evernote.com/shard/s324/sh/a00915b6-af19-4b0b-bae6-69d5bd95a4b8/92fda355a0d4243c/res/f59ddf16-27e3-4879-9de7-8f422d098a5f/debug.png)
-
-
-#### 静的解析
-
-Xcodeのメニューから `Run -> Analyze` を実行することで、静的解析が行われ、問題が起こり得る場所を事前に教えてくれます。
-
-### 参考
-
-#### ドキュメント
-
-- [Apple Developer Center](http://developer.apple.com/ios/)
-  - 公式ドキュメント
-- [日本語ドキュメント](https://developer.apple.com/jp/devcenter/ios/library/japanese.html)
-  - 公式ドキュメントの公式日本語訳。
-
