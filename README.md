@@ -53,8 +53,19 @@
 
 ##### どれがどの役割をできるかの確認
 
-- [ライブラリ](https://github.com/techlogics/iOS_Document/)
+- [ライブラリ](https://github.com/techlogics/iOS_Document/library.md)
 
+## 参考サイト
+##### 参考になるサイト、役に立つサイト
+- [http://www.swifttoolbox.io/](http://www.swifttoolbox.io/)
+	- Swiftのライブラリを検索できます。
+- [Qiita - Swift](http://qiita.com/tags/swift)
+	- QiitaのSwiftタグです。
+- [Swift Docs](https://sites.google.com/a/gclue.jp/swift-docs/)
+	- サンプルがかなり豊富です。
+- [Apple 公式Swift ドキュメント(英語)](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/GuidedTour.html#//apple_ref/doc/uid/TP40014097-CH2-XID_1)
+	- 素晴らしいドキュメント 
+ 
 ---
 ##編集者
 
