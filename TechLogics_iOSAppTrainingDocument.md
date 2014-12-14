@@ -626,14 +626,14 @@ Xcodeを開き、`File -> New -> Project`より新規プロジェクトを作成
 ![](https://www.evernote.com/shard/s324/sh/74b5801b-ee5e-418b-9f1e-a266cd6e0b25/453becde3917d99c695b536f232d0f54/res/f32e60fe-055a-4e32-8320-91d39781ea6f/skitch.png)
   
 今回はこのようなニュースアプリを作りたいと思います。
-#`To DO Demo`
-
+![](https://www.evernote.com/shard/s324/sh/cc54ea21-68d7-445c-9621-6098d22097d2/86f21d01a7fe3dc8765ea8d37d67b2fd/deep/0/iOS-Simulator---iPhone-6---iPhone-6---iOS-8.1-(12B411).png)
+![](https://www.evernote.com/shard/s324/sh/c17e51e9-fa51-4803-ac03-e0cb35a366cc/5b1bfb0bd93db0c8627ab0e2e0d57d4a/deep/0/Screenshot-12-15-14,-00-32.png)
   
 機能としては、  
-* ニュースのタイトルの表示
-* ニュースの記事の表示
-* ニュースの詳細ページを表示
-* 記事をつぶやく
+- ニュースのタイトルの表示
+- ニュースの記事の表示
+- ニュースの詳細ページを表示
+- 記事をつぶやく
 
 
 
@@ -1111,21 +1111,114 @@ if var responseData = dictionary["responseData"] as? NSDictionary {
 }			
 ```
 この部分では返ってきたJSONデータの中の`responseData/feed/entries`を取り出すための処理をしています。
+
 ```swift
 dispatch_async(dispatch_get_main_queue(), {
 	self.tableView.reloadData()
 })
 ```
-tableViewでダウンロードしたあとにデータを表示させるには一度tableViewを更新してあげる必要がある。しかしCocoaプログラミングでは画面の表示に関わる処理をするときにはメインスレッドでやってあげる必要がある。一方で先ほどのハンドラーの中ではメインとは別のスレッドで処理が行われている。そこでメインスレッドでtableViewを更新してあげるために`dispatch_async`メソッドを使ってあげます。引数にはメインキューを渡してあげます。そしてその中でtableViewのメソッドの`reloadData()`を呼び出しています。これでデータがダウンロードし終わったらtableViewを更新してくれます。最後に`NSURLSession`の`resume()`メソッドでダウンロードを始めます。
+tableViewでダウンロードしたあとにデータを表示させるには一度tableViewを更新してあげる必要がある。しかしCocoaプログラミングでは画面の表示に関わる処理をするときにはメインスレッドでやってあげる必要がある。一方で先ほどのハンドラーの中ではメインとは別のスレッドで処理が行われている。そこでメインスレッドでtableViewを更新してあげるために`dispatch_async`メソッドを使ってあげます。引数にはメインキューを渡してあげます。そしてその中でtableViewのメソッドの`reloadData()`を呼び出しています。これでデータがダウンロードし終わったらtableViewを更新してくれます。最後に`NSURLSession`の`resume()`メソッドでダウンロードを始めます。  
+次は実際にセルにデータと表示させてみましょう。まずはセルの数を設定します。
+```swift
+override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // entriesの数だけ表示
+        return self.entries.count
+    }
+```
+このtableViewのメソッドはセルの表示数を返します。ここでは`entries`配列の数だけ返してあげれば記事の数に応じてセルの数を変えてあげることができます。
+```swift
+override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("NewsCell", forIndexPath: indexPath) as UITableViewCell
+        
+        // エントリーのそれぞれの値を取得
+        var entryTitle = self.entries[indexPath.row]["title"] as String
+        var entryContent = self.entries[indexPath.row]["contentSnippet"] as String
+        
+        // UIパーツをタグ付け
+        var eyeCatchImage = cell.viewWithTag(1) as UIImageView
+        var titleLabel = cell.viewWithTag(2) as UILabel
+        var contentsLabel = cell.viewWithTag(3) as UILabel
+        
+        // UIパーツに値を表示
+        eyeCatchImage.image = UIImage(named: "lig")
+        titleLabel.text = entryTitle
+        contentsLabel.text = entryContent
+        
+        return cell
+    }
+```
+次にセルの内容を設定してあげます。  
+```swift
+let cell = tableView.dequeueReusableCellWithIdentifier("NewsCell", forIndexPath: indexPath) as UITableViewCell
+```
+この部分ではセルのインデックス及び`identifier`に基づいてセルのインスタンスを作成します。次に`entries`配列の中のタイトルと記事を別々の変数に保持しておきます。その際`String`型にキャストしてあげます。次はStoryboardでタグをつけたパーツを取得しましょう。1は`UIImageView`、2は`UILabel`、3も`UILabel`にキャストして変数に代入します。最後にそれぞれのプロパティにアクセスして表示させたいデータを入れてあげましょう。またここでサイトの画像を一緒に表示させておくと、よりアプリらしくなります。今回は[LIGさんの画像](https://www.evernote.com/shard/s324/sh/2871fb3a-ab15-4a32-96d5-c5b48026d3c9/36525ebfa0166f74/res/7ac82e01-c86f-4b9d-97a1-b282e3cc78f2/lig.png)を使わせていただきましょう。
+ダウンロードしたらXcodeの左のプロジェクトフォルダに直接D&Dしてあげましょう。  
+さて、ここまで出来たら一度起動してみます。![](https://www.evernote.com/shard/s324/sh/9cac0fd7-137c-4ca2-84d4-6f4b78dc6aee/3cce537a251727cfdb738718f96c4174/deep/0/NewsTableViewController.swift.png)
+シュミレータには様々な種類があり、iPhone、iPad共にテストすることができます。  
+![](https://www.evernote.com/shard/s324/sh/94f9f259-305a-4b02-87ba-c063b4126c99/c899dfad0575f61097181ebc76561c9c/deep/0/Screenshot-12-14-14,-23-42.png)
 
+更新ボタンを押してみましょう。うまく動くとこのように表示されると思います。  
+さぁ、最後に詳細を表示させて仕上げます。`DetailViewContorller`を開いてください。  
+
+まずはこちらに`NewsTableViewContorller`から受け取るURLを保持するための変数を用意してあげます。　
+```swift
+class DetailViewController: UIViewController {
+
+    @IBOutlet weak var webView: UIWebView!
+    
+    // URL受け取り用の変数
+    var URLString = String()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // URLStringをNSURLに変換
+        var url = NSURL(string: URLString)
+        
+        // webViewでリクエストを読み込む
+        webView.loadRequest(NSURLRequest(URL: url!))
+        
+        
+        // Do any additional setup after loading the view.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+}
+```
+受け取ったURLは`NSURL`に変換して扱いやすくします。そしてUIWebViewのメソッドの`loadRequest`でリクエストを読み込みwebViewに表示します。
+さて、`DetailViewController`はこれでおわりなのですが、このままではセルを選択しても`DetailViewController`には遷移しません。そこで次は`NewsTableViewController`から色々やらなければなりません。  
+
+```swift
+// 画面遷移の準備
+override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		// セグエの識別子をチェック
+        if segue.identifier == "DetailSegue" {
+        	// 遷移先のViewController
+            var detailViewContorller = segue.destinationViewController as DetailViewController
+            // DetailViewControllerのURLStringプロパティにアクセス
+            detailViewContorller.URLString = sender as String
+        }
+    }
+```
+`prepareForSegue`メソッドはセグエが実行させる前に呼び出されるものでその名の通り準備する役割を担います。引数で渡ってきた`segue`の`idetifier`が`"DetailSegue"`ならば、目的のViewControllerに`DetailViewController`を指定してそのインスタンスを作ってあげます。そして`URLString`プロパティに`sender`を渡して終わりです。 　
+ 
+最後にセルが選択された時にセグエを実行してあげます。  
+```swift
+// セルが選択されたときに呼ばれる
+override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		// senderに記事のリンクを渡してあげる
+        performSegueWithIdentifier("DetailSegue", sender: entries[indexPath.row]["link"] as String)
+    }
+```
+これでセルを選択すると画面が遷移して、その記事のURLのページが表示されると思います。実行してみましょう。![](https://www.evernote.com/shard/s324/sh/42a6da5d-1a4d-45f5-a6cf-97d023041e07/0b18f44849c5b18c54847221065a5938/deep/0/Screenshot-12-15-14,-00-15.png)
+NavigationControllerによって戻るボタンもうまくできています。これでだいぶアプリっぽくなりました。
+##### お疲れ様でした。これでみなさんはiOS開発の基本的なことができるようになったと思います。しかしこのアプリはまだ完成していません。記事の詳細画面に配置した共有ボタンをまだ実装していません。ぜひ自分の手で実際に実装方法を調べて実装してみることをおすすめします。最初は難しいかもしれません、しかしそれらを乗り越えてこそ成長できると思いますし、達成感も味わえます。それでは、iOSの世界を一緒にさらに探検していきましょう。
 ---
 ## 課題
-
-課題では、iPhoneアプリを作ってもらいます。一からアプリを作成し、できれば実機で動作させましょう。
-
-### 課題
-
-
-### 自由課題
-
-創意工夫をしてよりよいアプリにしてください。
+#### 課題
+- 共有ボタンを実装してみましょう。 
+- 今のままでは、画像が大きすぎます。もうすこし画像をちいさくし、UIをブラッシュアップしてみてください。 

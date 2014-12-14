@@ -13,6 +13,7 @@
 		96077B061A345F9500217CA0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96077B041A345F9500217CA0 /* LaunchScreen.xib */; };
 		96077B121A345F9500217CA0 /* MyFirstAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96077B111A345F9500217CA0 /* MyFirstAppTests.swift */; };
 		96077B1C1A347A0200217CA0 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96077B1B1A347A0200217CA0 /* NewsTableViewController.swift */; };
+		96EB589B1A3CBB3900FEFEFB /* lig.png in Resources */ = {isa = PBXBuildFile; fileRef = 96EB589A1A3CBB3900FEFEFB /* lig.png */; };
 		96EBCA811A35D02E00CE791D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EBCA801A35D02E00CE791D /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		96077B101A345F9500217CA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96077B111A345F9500217CA0 /* MyFirstAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFirstAppTests.swift; sourceTree = "<group>"; };
 		96077B1B1A347A0200217CA0 /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
+		96EB589A1A3CBB3900FEFEFB /* lig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lig.png; sourceTree = "<group>"; };
 		96EBCA801A35D02E00CE791D /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,6 +81,7 @@
 		96077AF81A345F9500217CA0 /* MyFirstApp */ = {
 			isa = PBXGroup;
 			children = (
+				96EB589A1A3CBB3900FEFEFB /* lig.png */,
 				96077AFB1A345F9500217CA0 /* AppDelegate.swift */,
 				96077B1B1A347A0200217CA0 /* NewsTableViewController.swift */,
 				96EBCA801A35D02E00CE791D /* DetailViewController.swift */,
@@ -197,6 +200,7 @@
 			files = (
 				96077B011A345F9500217CA0 /* Main.storyboard in Resources */,
 				96077B061A345F9500217CA0 /* LaunchScreen.xib in Resources */,
+				96EB589B1A3CBB3900FEFEFB /* lig.png in Resources */,
 				96077B031A345F9500217CA0 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

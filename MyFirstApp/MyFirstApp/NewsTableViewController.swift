@@ -11,7 +11,7 @@ import UIKit
 class NewsTableViewController: UITableViewController {
     
     // APIリクエスト用URL
-    let URLString = NSURL(string:"https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=http://liginc.co.jp/feed&num=20](https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=http://liginc.co.jp/feed&num=20")
+    let URLString = NSURL(string:"https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=http://liginc.co.jp/feed&num=20")
     
     // 記事用の配列
     var entries = NSMutableArray()
@@ -29,13 +29,32 @@ class NewsTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // entriesの数だけ表示
         return self.entries.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("NewsCell", forIndexPath: indexPath) as UITableViewCell
         
+        // エントリーのそれぞれの値を取得
+        var entryTitle = self.entries[indexPath.row]["title"] as String
+        var entryContent = self.entries[indexPath.row]["contentSnippet"] as String
+        
+        // UIパーツをタグ付け
+        var eyeCatchImage = cell.viewWithTag(1) as UIImageView
+        var titleLabel = cell.viewWithTag(2) as UILabel
+        var contentsLabel = cell.viewWithTag(3) as UILabel
+        
+        // UIパーツに値を表示
+        eyeCatchImage.image = UIImage(named: "lig")
+        titleLabel.text = entryTitle
+        contentsLabel.text = entryContent
+        
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("DetailSegue", sender: entries[indexPath.row]["link"] as String)
     }
     
     @IBAction func refresh(sender: AnyObject) {
@@ -55,6 +74,7 @@ class NewsTableViewController: UITableViewController {
                     if var entries = feed["entries"] as? NSArray {
                         // entries配列をentriesプロパティに追加
                         self.entries.addObjectsFromArray(entries)
+                        println(entries)
                     }
                 }
             }
@@ -68,5 +88,12 @@ class NewsTableViewController: UITableViewController {
         
         // ダウンロードを開始
         downloadDataTask.resume()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "DetailSegue" {
+            var detailViewContorller = segue.destinationViewController as DetailViewController
+            detailViewContorller.URLString = sender as String
+        }
     }
 }
