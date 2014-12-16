@@ -1,16 +1,20 @@
 # TECH LOGICS iOS開発者養成ドキュメント
 
-* 【文法】
+- 【】
+	- 
 
-* 【開発フロー/運用/保守性】
+- 【開発フロー/運用/保守性】
 
-* 【よく使う実践的コード】
+- 【よく使う実践的コード】
 
-* 【ライブラリ】
+- 【ライブラリ】
 
-の下記の4つのパターンを用意している。
 
-### [WEB版](https://github.com/techlogics/WEB_Document)もご覧ください
+### 他のドキュメントもご覧ください
+#####[WEB](https://github.com/techlogics/WEB_Document)
+#####[Android](https://github.com/techlogics/Android_Document)
+#####[Git](https://github.com/techlogics/Git_Document)
+
 
 ==============
 
@@ -18,7 +22,10 @@
 
 ##### 初めて触る人向け
 
-- [初めてのiOS開発](https://github.com/techlogics/iOS_Document/blob/master/TechLogics_iOSAppTrainingDocument.md)
+- [Swift基本文法](https://github.com/techlogics/iOS_Document/blob/master/swift_grammar.md)
+	- Swiftの文法を説明しています。
+- [初めてのiOSアプリ開発](https://github.com/techlogics/iOS_Document/blob/master/develop_application.md)
+	- Swiftを利用してJSONをデータを扱うアプリを開発していきます。
 
 
 
@@ -32,7 +39,7 @@
 	- [Apple Developer Center](http://developer.apple.com/ios/)
   		- 公式ドキュメント
 	- [日本語ドキュメント](https://developer.apple.com/jp/devcenter/ios/library/japanese.html)
-	  	- 公式ドキュメントの公式日本語訳。
+	  	- 公式ドキュメントの公式日本語訳
 - ##### デバッグの方法
 	-  `NSLog`
 	- `println`
@@ -53,7 +60,7 @@
 
 ##### どれがどの役割をできるかの確認
 
-- [ライブラリ](https://github.com/techlogics/iOS_Document/library.md)
+- [ライブラリ](https://github.com/techlogics/iOS_Document/)
 
 ## 参考サイト
 ##### 参考になるサイト、役に立つサイト
