@@ -53,7 +53,7 @@
 
 ##### よく躓いたりすることなど、案件をしてわからなくなってもこれ見ながらできるようにする
 
-- [よく使う実践的コード](https://github.com/techlogics/iOS_Document/practice.md)
+- [よく使う実践的コード](https://github.com/techlogics/iOS_Document/blob/master/practice.md)
 
 ## ライブラリ
 
