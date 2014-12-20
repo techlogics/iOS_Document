@@ -53,7 +53,7 @@
 
 ##### よく躓いたりすることなど、案件をしてわからなくなってもこれ見ながらできるようにする
 
-- [よく使う実践的コード](https://github.com/techlogics/iOS_Document/)
+- [よく使う実践的コード](https://github.com/techlogics/iOS_Document/practice.md)
 
 ## ライブラリ
 
@@ -75,7 +75,7 @@
 ---
 ##編集者
 
-###[Kenichi Saito](https://github.com/tkcfjips/)
+#### [Kenichi Saito](https://github.com/tkcfjips/)
 
 このTECH LOGICS養成ドキュメントmdはTECH LOGICSメンバーに関わらず、<br>
 様々な方の意見を頂きながら__オープンソースな日本一のプログラミングドキュメント__を作成しております。<br>
