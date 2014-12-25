@@ -48,6 +48,8 @@
 ![Break Point](https://www.evernote.com/shard/s324/sh/a00915b6-af19-4b0b-bae6-69d5bd95a4b8/92fda355a0d4243c/res/f59ddf16-27e3-4879-9de7-8f422d098a5f/debug.png)
 	- 静的解析
 		- Xcodeのメニューから `Run -> Analyze` を実行することで、静的解析が行われ、問題が起こり得る場所を事前に教えてくれます。
+- ##### Xcodeチートシート
+![](https://www.evernote.com/shard/s324/sh/df476421-d668-47d7-b958-8dafdf50c626/9e341ae8f7a0fbd3c6188089f256511f/deep/0/Fullscreen-12-25-14,-19-02.png)
 
 ## よく使う実践的コード
 
