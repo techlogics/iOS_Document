@@ -17,6 +17,53 @@ Alamofireを導入するには[Alamofire](https://github.com/Alamofire/Alamofire
 
 - 使用方法
 
+今回は[こちら](http://jsonplaceholder.typicode.com/posts)のデータをダウンロードしてみたいと思います。
+
+```swift
+override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        Alamofire.request(.GET, "http://jsonplaceholder.typicode.com/posts")
+            .responseJSON { (request, response, JSON, error) in
+                println(request)
+                println(response)
+                println(JSON)
+                println(error)
+        }
+        
+    }
+```
+
+これを実行するとうまく結果が返ってきているのがわかると思います。これだけでリクエストが処理ができるのでかなり簡単です。では、説明していきます。
+
+```swift
+Alamofire.requestJSON(.GET, "http://jsonplaceholder.typicode.com/posts")
+```  
+
+この部分でリクエストするためのオブジェクトを生成します。列挙型にHTTPメソッドが定義されていて下記のものが使えます。  
+
+```swift
+public enum Method: String {
+    case OPTIONS = "OPTIONS"
+    case GET = "GET"
+    case HEAD = "HEAD"
+    case POST = "POST"
+    case PUT = "PUT"
+    case PATCH = "PATCH"
+    case DELETE = "DELETE"
+    case TRACE = "TRACE"
+    case CONNECT = "CONNECT"
+}
+```
+
+次にリクエストするURLを指定してあげます。なお、パラメータを追加したい場合はその後に指定してあげます。
+
+```swift
+Alamofire.requestJSON(.GET, "http://jsonplaceholder.typicode.com/posts", parameters: ["foo": "bar"])
+```
+
+これでレスポンスメソッドを呼ぶことで非同期通信が開始され、完了したらクロージャーが呼ばれます。
+今回はJsonでリクエストしたので結果は`.responseJSON`メソッドでJSON形式にシリアライズして取得します。あとは受け取った値を利用していろいろしてください。
 
 ---
 
