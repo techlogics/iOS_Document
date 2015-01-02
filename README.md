@@ -1,21 +1,5 @@
 # TECH LOGICS iOS開発者養成ドキュメント
 
-- 【入門】
-
-- 【開発フロー/運用/保守性】
-
-- 【よく使う実践的コード】
-
-- 【ライブラリ】
-
-
-### 他のドキュメントもご覧ください
-#####[WEB](https://github.com/techlogics/WEB_Document)
-#####[Android](https://github.com/techlogics/Android_Document)
-#####[Git](https://github.com/techlogics/Git_Document)
-
-
-==============
 
 ## 入門
 
@@ -52,17 +36,14 @@
 - ##### Xcodeチートシート
 ![](https://www.evernote.com/shard/s324/sh/df476421-d668-47d7-b958-8dafdf50c626/9e341ae8f7a0fbd3c6188089f256511f/deep/0/Fullscreen-12-25-14,-19-02.png)
 
-## よく使う実践的コード
+## [よく使う実践的コード](https://github.com/techlogics/iOS_Document/blob/master/practice.md)
 
-##### よく躓いたりすることなど、案件をしてわからなくなってもこれ見ながらできるようにする
+* よく躓いたりすることなど、案件をしてわからなくなってもこれ見ながらできるようにする
 
-- [よく使う実践的コード](https://github.com/techlogics/iOS_Document/blob/master/practice.md)
 
-## ライブラリ
+## [ライブラリ](https://github.com/techlogics/iOS_Document/)
+* どれがどの役割をできるかの確認
 
-##### どれがどの役割をできるかの確認
-
-- [ライブラリ](https://github.com/techlogics/iOS_Document/)
 
 ## 参考サイト
 ##### 参考になるサイト、役に立つサイト
@@ -76,6 +57,14 @@
 	- 素晴らしいドキュメント 
  
 ---
+
+### 他のドキュメントもご覧ください
+#####[WEB](https://github.com/techlogics/WEB_Document)
+#####[Android](https://github.com/techlogics/Android_Document)
+#####[Git](https://github.com/techlogics/Git_Document)
+
+---
+
 ##編集者
 
 #### [Kenichi Saito](https://github.com/tkcfjips/)
