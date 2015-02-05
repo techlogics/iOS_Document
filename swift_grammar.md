@@ -70,7 +70,7 @@ class SomeClass {
 	}
 }
 
-var someInstance: SomeClass = SomeClass()
+var someInstance: SomeClass? = SomeClass()
 
 someInstance.someFunction() // これはエラー
 someInstance?.someFunction() // OK
@@ -438,7 +438,8 @@ productName.watch // AppleWATCH
  	...
  	})
 ```
-この例のdataTaskWithURLがデータをダウンロードするメソッドで、最初の引数としてデータのURLを渡します。そしてその後の第2引数で渡しているのがクロージャです。urlの後のcompletionHandler:という名前の後にdata、response、errorが続いています、これらがクロージャに渡された引数で、その後ろのinの後がクロージャの処理を記述を書くところです。  
+この例のdataTaskWithURLがデータをダウンロードするメソッドで、最初の引数としてデータのURLを渡します。そしてその後の第2引数で渡しているのがクロージャです。urlの後のcompletionHandler:という名前の後にdata、response
+、errorが続いています、これらがクロージャに渡された引数で、その後ろのinの後がクロージャの処理を記述を書くところです。  
 では、クロージャの文法をみていきましょう。簡単なクロージャの例を作ってみます。
 ```swift
 func downloadData(handler: (String, Int, Bool) -> Int) {
