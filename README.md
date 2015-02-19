@@ -60,7 +60,7 @@
 
 ### 他のドキュメントもご覧ください
 #####[WEB](https://github.com/techlogics/WEB_Document)
-#####[Android](https://github.com/techlogics/Android_Document)
+<!-- #####[Android](https://github.com/techlogics/Android_Document) -->
 #####[Git](https://github.com/techlogics/Git_Document)
 
 ---
